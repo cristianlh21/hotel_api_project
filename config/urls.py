@@ -24,4 +24,7 @@ urlpatterns = [
     
     # 4. Rutas de nuestras Apps modulares (Vacías por ahora)
     # path('api/users/', include('users.urls')),
+    
+    # ¡NUEVO! Conecta el módulo de Habitaciones
+    path('api/habitaciones/', include('habitaciones.urls')), # <<<--- ¡AÑADIR ESTO!
 ]

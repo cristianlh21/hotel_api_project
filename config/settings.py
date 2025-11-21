@@ -45,8 +45,9 @@ INSTALLED_APPS = [
 
     # APPS PROPIAS (De momento vacías)
     # Aquí iremos añadiendo nuestros módulos
+    'core',
     'users', 
-    # 'habitaciones', 
+    'habitaciones', 
     # 'recepcion',
 ]
 
