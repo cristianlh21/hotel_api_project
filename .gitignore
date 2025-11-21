@@ -1,0 +1,28 @@
+# Directorios de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entorno Virtual
+venv/
+env/
+
+# Archivos de Django
+*.log
+local_settings.py  # Si creas un archivo de configuración local
+
+# Bases de Datos
+db.sqlite3
+
+# Claves Secretas
+# Nunca subas esto. Guárdalo como variable de entorno o en un archivo .env
+secret_key.txt
+.env
+
+# Directorios de VS Code
+.vscode/
+
+# Ignorar archivos estáticos y media generados
+/static_collected/
+/media/

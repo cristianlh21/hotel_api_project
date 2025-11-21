@@ -1,0 +1,7 @@
+Django>=4.2
+djangorestframework>=3.14
+djangorestframework-simplejwt>=5.2  # Para Autenticación moderna (JWT)
+# drf-spectacular para generar la documentación (opcional pero muy útil)
+drf-spectacular>=0.26
+psycopg2-binary # Si usas PostgreSQL (recomendado para ERPs)
+# Si prefieres SQLite para empezar: No necesitas esto
