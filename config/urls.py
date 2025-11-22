@@ -28,4 +28,5 @@ urlpatterns = [
     ## Rutas de nuestras Apps modulares
     path('api/habitaciones/', include('habitaciones.urls')),
     path('api/huespedes/', include('huespedes.urls')),
+    path('api/reservas/', include('reservas.urls')),
 ]
