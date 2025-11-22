@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'habitaciones', 
     'huespedes',
     'reservas',
+    'cuentas',
     
 ]
 
