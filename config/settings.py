@@ -87,16 +87,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -160,4 +150,21 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'API Hotel Management System',
     'DESCRIPTION': 'Documentación de la API del sistema de gestión del hotel.',
     'VERSION': '1.0.0',
+}
+
+# Seguridad
+SECRET_KEY = os.environ.get('SECRET_KEY', 'default-key-local-dev-only') # Lee de ENV
+DEBUG = os.environ.get('DEBUG', 'True') == 'True' 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') # Permite cualquier host dentro de Docker
+
+# Configuración de Base de Datos (Reemplaza la configuración de SQLite)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'hoteldjdb'),
+        'USER': os.environ.get('DB_USER', 'hoteldjuser'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'supersecurepassword'),
+        'HOST': os.environ.get('DB_HOST', 'db'), # ¡CRUCIAL! 'db' es el nombre del servicio en docker-compose
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
 }

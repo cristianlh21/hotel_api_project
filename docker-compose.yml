@@ -1,0 +1,48 @@
+# hotel_api_project/docker-compose.yml
+
+services:
+  # Servicio de la aplicación Django (Backend)
+  web:
+    build: .
+    container_name: hotel_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  # Servicio de la Base de Datos PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: hotel_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  # 🚨 NUEVO SERVICIO: pgAdmin (Interfaz gráfica para la DB)
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: hotel_pgadmin
+    environment:
+      # Credenciales de login para acceder a pgAdmin en el navegador
+      PGADMIN_DEFAULT_EMAIL: admin@hotelapi.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin_password # Usa una contraseña segura!
+    ports:
+      - "5050:80" # Mapeamos el puerto interno 80 al puerto 5050 de tu host
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db # Asegura que la DB esté lista para que pgAdmin se conecte
+
+volumes:
+  postgres_data:
+  pgadmin_data: # Nuevo volumen para persistir la configuración de pgAdmin
