@@ -25,10 +25,15 @@ urlpatterns = [
     # 4. Rutas de nuestras Apps modulares (Vacías por ahora)
     # path('api/users/', include('users.urls')),
     
-    ## Rutas de nuestras Apps modulares
+    ## Rutas de nuestras Apps Recepción
     path('api/habitaciones/', include('habitaciones.urls')),
     path('api/huespedes/', include('huespedes.urls')),
     path('api/reservas/', include('reservas.urls')),
     path('api/recepcion/', include('recepcion.urls')),
-    path('api/cuentas/', include('cuentas.urls')),
+    path('api/', include('cuentas.urls')),
+    
+    ## Rutas de nuestras Apps RRHH
+    path('api/personal/', include('personal.urls')),
+    path('api/nomina/', include('nomina.urls')),
+
 ]

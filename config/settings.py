@@ -54,6 +54,10 @@ INSTALLED_APPS = [
     'recepcion',
     'cuentas',
     
+    # ...RRHH
+    'personal',
+    'nomina',
+    
 ]
 
 MIDDLEWARE = [
