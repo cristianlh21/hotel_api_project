@@ -4,17 +4,17 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Sum
 from .models import ConceptoNomina, Liquidacion, DetalleLiquidacion
-from .serializers import LiquidacionSerializer, DetalleLiquidacionSerializer
+from .serializers import LiquidacionSerializer, DetalleLiquidacionSerializer, ConceptoNominaSerializer
 from personal.models import Empleado, Asistencia, Puesto # Importar datos para el cálculo
 from decimal import Decimal
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import serializers
 
 
-# --- ViewSets para Datos Maestros ---
 class ConceptoNominaViewSet(viewsets.ModelViewSet):
     queryset = ConceptoNomina.objects.all()
-    serializer_class = serializers.ModelSerializer # Usar el ModelSerializer simple (se define aquí)
+    # 🚨 CAMBIAR ESTO:
+    serializer_class = ConceptoNominaSerializer # <<<--- USAR EL SERIALIZER CORRECTO
     permission_classes = [IsAuthenticated]
 
 # --- ViewSet con Lógica de Cálculo (Crucial) ---

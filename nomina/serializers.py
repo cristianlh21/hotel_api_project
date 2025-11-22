@@ -2,6 +2,13 @@
 from rest_framework import serializers
 from .models import ConceptoNomina, Liquidacion, DetalleLiquidacion
 
+
+class ConceptoNominaSerializer(serializers.ModelSerializer):
+    id = serializers.UUIDField(read_only=True)
+    class Meta:
+        model = ConceptoNomina
+        fields = '__all__'
+
 # --- 1. Serializer para el Detalle (Líneas del Recibo) ---
 class DetalleLiquidacionSerializer(serializers.ModelSerializer):
     concepto_nombre = serializers.CharField(source='concepto.nombre', read_only=True)
