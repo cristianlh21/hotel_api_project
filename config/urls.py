@@ -35,5 +35,8 @@ urlpatterns = [
     ## Rutas de nuestras Apps RRHH
     path('api/personal/', include('personal.urls')),
     path('api/nomina/', include('nomina.urls')),
+    
+    # Rutas de nuestras Apps Inventario
+    path('api/inventario/', include('inventario.urls')),
 
 ]
