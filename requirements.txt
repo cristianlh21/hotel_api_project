@@ -5,3 +5,4 @@ djangorestframework-simplejwt>=5.2  # Para Autenticación moderna (JWT)
 drf-spectacular>=0.26
 psycopg2-binary # Si usas PostgreSQL (recomendado para ERPs)
 python-dotenv
+django-cors-headers

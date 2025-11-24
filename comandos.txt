@@ -1,3 +1,10 @@
 docker-compose up --build -d
 docker-compose exec web python manage.py migrate
 docker-compose exec web python manage.py createsuperuser
+
+# 1. Detener y remover los contenedores viejos
+docker-compose down
+
+# 2. Reconstruir la imagen e iniciar los servicios.
+# El flag --build asegura que se instale django-cors-headers
+docker-compose up --build -d

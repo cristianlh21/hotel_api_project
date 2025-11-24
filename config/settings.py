@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     
     # TERCEROS
     'rest_framework',
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -168,3 +170,20 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
+
+# config/settings.py (Añadir al final del archivo)
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173", # La URL donde corre tu frontend
+    "http://127.0.0.1:5173", # La versión 127.0.0.1
+]
+
+# Si necesitas permitir todos los métodos HTTP, asegúrate de que estos sean True
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
